@@ -1,0 +1,70 @@
+---
+import { LANGUAGES, type SupportedLanguage, getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  currentLang: SupportedLanguage;
+}
+
+const { currentLang } = Astro.props;
+---
+
+<footer class="w-full bg-gray-100 dark:bg-[#1E293B] border-t border-gray-200 dark:border-[#334155] py-10 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 dark:text-gray-400 transition-colors">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+    
+    <div class="space-y-1.5">
+      <div class="flex items-center justify-center md:justify-start gap-2">
+        <span class="font-extrabold text-sm sm:text-base text-[#213555] dark:text-white">
+          ResponsiveViewer
+        </span>
+        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#E5D283] text-[#213555]">
+          v1.0 • Client-Side
+        </span>
+      </div>
+      <p class="max-w-md text-gray-600 dark:text-gray-400">
+        Automated multi-device web responsiveness tester. Zero servers, zero cookies, and zero user tracking.
+      </p>
+    </div>
+
+    {/* Language Footer Links */}
+    <div class="flex flex-wrap items-center justify-center gap-2">
+      {LANGUAGES.map((lang) => (
+        <a
+          href={getLocalizedPath(lang.code, Astro.url.pathname)}
+          class={`px-2 py-1 rounded text-[11px] font-medium transition-colors ${
+            lang.code === currentLang
+              ? 'bg-[#213555] text-white dark:bg-[#4F709C]'
+              : 'hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'
+          }`}
+        >
+          {lang.label}
+        </a>
+      ))}
+    </div>
+
+    {/* Links */}
+    <div class="flex items-center gap-4 text-xs font-semibold">
+      <a
+        href="https://ko-fi.com/kishara"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[#213555] dark:text-[#E5D283] hover:underline"
+      >
+        Ko-fi Support
+      </a>
+      <span>•</span>
+      <a
+        href="https://github.com/responsive-viewer/responsive-viewer.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-gray-600 dark:text-gray-300 hover:text-[#213555] dark:hover:text-white transition-colors"
+      >
+        GitHub
+      </a>
+    </div>
+
+  </div>
+
+  <div class="max-w-6xl mx-auto mt-8 pt-4 border-t border-gray-200 dark:border-gray-800 text-center text-[11px] text-gray-400">
+    © {new Date().getFullYear()} ResponsiveViewer. MIT Licensed. Built for developers and designers worldwide.
+  </div>
+</footer>

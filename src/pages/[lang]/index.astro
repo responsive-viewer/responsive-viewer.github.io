@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ResponsiveTester } from '../../components/ResponsiveTester';
+import SeoContent from '../../components/SeoContent.astro';
+import { LANGUAGES, type SupportedLanguage, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return LANGUAGES
+    .filter(l => l.code !== 'en')
+    .map(l => ({
+      params: { lang: l.code }
+    }));
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang as SupportedLanguage) || 'en';
+const t = useTranslations(currentLang);
+---
+
+<Layout currentLang={currentLang}>
+  <ResponsiveTester 
+    client:load 
+    currentLang={currentLang}
+    translations={{
+      controls: t.controls,
+      stage: t.stage,
+      troubleshoot: t.troubleshoot
+    }}
+  />
+
+  <SeoContent slot="seo-content" currentLang={currentLang} translations={{ seo: t.seo }} />
+</Layout>

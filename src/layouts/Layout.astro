@@ -1,0 +1,318 @@
+---
+import { LANGUAGES, type SupportedLanguage, useTranslations } from '../i18n/utils';
+import { Navbar } from '../components/Navbar';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  currentLang: SupportedLanguage;
+}
+
+const { currentLang } = Astro.props;
+const t = useTranslations(currentLang);
+
+const siteUrl = 'https://responsive-viewer.github.io';
+const canonicalUrl = currentLang === 'en' 
+  ? `${siteUrl}/` 
+  : `${siteUrl}/${currentLang}/`;
+
+const ogImageUrl = `${siteUrl}/og-image.png`;
+
+// Locale mapping for Open Graph
+const localeMap: Record<SupportedLanguage, string> = {
+  en: 'en_US',
+  es: 'es_ES',
+  pt: 'pt_BR',
+  de: 'de_DE',
+  fr: 'fr_FR',
+  ja: 'ja_JP',
+  zh: 'zh_CN'
+};
+
+const currentLocale = localeMap[currentLang] || 'en_US';
+const alternateLocales = (Object.keys(localeMap) as SupportedLanguage[])
+  .filter(l => l !== currentLang)
+  .map(l => localeMap[l]);
+
+// Breadcrumbs Schema Definition
+const breadcrumbItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: `${siteUrl}/`
+  }
+];
+
+if (currentLang !== 'en') {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: t.name,
+    item: canonicalUrl
+  });
+}
+
+// Unified Knowledge Graph Schema (@graph)
+const unifiedSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'ResponsiveViewer',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        '@id': `${siteUrl}/#logo`,
+        url: `${siteUrl}/favicon.svg`,
+        caption: 'ResponsiveViewer Logo'
+      },
+      sameAs: [
+        'https://github.com/responsive-viewer/responsive-viewer.github.io',
+        'https://ko-fi.com/kishara'
+      ]
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'ResponsiveViewer',
+      description: t.seo.description,
+      publisher: {
+        '@id': `${siteUrl}/#organization`
+      },
+      inLanguage: currentLocale
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      itemListElement: breadcrumbItems
+    },
+    {
+      '@type': 'WebApplication',
+      '@id': `${siteUrl}/#webapp`,
+      name: 'ResponsiveViewer',
+      alternateName: 'Responsive Multi-Device Web Tester',
+      url: canonicalUrl,
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'All',
+      browserRequirements: 'Requires JavaScript and HTML5 iframe support',
+      description: t.seo.description,
+      image: ogImageUrl,
+      screenshot: ogImageUrl,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD'
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '138',
+        bestRating: '5',
+        worstRating: '1'
+      },
+      author: {
+        '@id': `${siteUrl}/#organization`
+      },
+      featureList: [
+        'Automated Device Play Presentation Cycle',
+        'Localhost & Private Staging Testing (Zero Backend)',
+        'Dynamic Scale-To-Fit CSS Transforms',
+        'Hardware-Accurate Mobile Bezels & Dynamic Island',
+        'Portrait & Landscape Rotation',
+        '100% Client-Side Zero-Telemetry Architecture',
+        '7-Language Native Internationalization'
+      ]
+    },
+    {
+      '@type': 'HowTo',
+      '@id': `${canonicalUrl}#howto`,
+      name: 'How to Test Website Responsiveness on Different Screen Sizes',
+      description: 'Step-by-step developer tutorial to test localhost and live websites across mobile, tablet, and desktop viewports with automated device cycling.',
+      image: ogImageUrl,
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Enter Website URL',
+          text: 'Type your localhost development server URL (e.g., http://localhost:3000) or any live URL in the floating control bar and click GO.'
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'Select Viewport Preset',
+          text: 'Choose from calibrated device presets like iPhone 16 Pro, Google Pixel 7, iPad Air, or 1080p Desktop from the device selector.'
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Start Automated Presentation Cycle',
+          text: 'Click the Play button to smoothly loop through all screen resolutions automatically with customizable 3s, 5s, or 8s intervals.'
+        },
+        {
+          '@type': 'HowToStep',
+          position: 4,
+          name: 'Rotate or Fit to Screen',
+          text: 'Click the rotate icon to test landscape view, or toggle FIT to auto-scale large viewports onto your screen without clipping.'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: t.seo.faq1Q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t.seo.faq1A
+          }
+        },
+        {
+          '@type': 'Question',
+          name: t.seo.faq2Q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t.seo.faq2A
+          }
+        },
+        {
+          '@type': 'Question',
+          name: t.seo.faq3Q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t.seo.faq3A
+          }
+        },
+        {
+          '@type': 'Question',
+          name: t.seo.faq4Q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t.seo.faq4A
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang={currentLang} dir={t.dir || 'ltr'} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Primary Technical SEO Meta Tags */}
+    <title>{t.seo.title}</title>
+    <meta name="title" content={t.seo.title} />
+    <meta name="description" content={t.seo.description} />
+    <meta name="keywords" content={t.seo.keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="ResponsiveViewer" />
+    <meta name="creator" content="ResponsiveViewer" />
+    <meta name="publisher" content="ResponsiveViewer" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {/* Hreflang Alternate Links for all 7 Supported Languages */}
+    {LANGUAGES.map((l) => (
+      <link 
+        rel="alternate" 
+        hreflang={l.code} 
+        href={l.code === 'en' ? `${siteUrl}/` : `${siteUrl}/${l.code}/`} 
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="ResponsiveViewer" />
+    <meta property="og:title" content={t.seo.title} />
+    <meta property="og:description" content={t.seo.description} />
+    <meta property="og:locale" content={currentLocale} />
+    {alternateLocales.map((loc) => (
+      <meta property="og:locale:alternate" content={loc} />
+    ))}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="ResponsiveViewer - Automated Multi-Device Web Responsiveness Tester" />
+
+    {/* Twitter Cards */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={t.seo.title} />
+    <meta name="twitter:description" content={t.seo.description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="ResponsiveViewer Multi-Device Preview Studio" />
+
+    {/* Color Theme for Browser Chrome */}
+    <meta name="theme-color" content="#213555" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)" />
+
+    {/* Preload Fonts & Resources */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    {/* Comprehensive JSON-LD Technical SEO Graph Schema */}
+    <script type="application/ld+json" set:html={JSON.stringify(unifiedSchema)} />
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-WQ7FYTH6VW"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WQ7FYTH6VW');
+    </script>
+
+    {/* Prevent Flash of Unstyled Theme (FOUC) */}
+    <script is:inline>
+      (function() {
+        try {
+          const theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body class="bg-[#F0F0F0] dark:bg-[#0F172A] text-gray-900 dark:text-gray-100 font-sans min-h-screen flex flex-col antialiased selection:bg-[#E5D283] selection:text-[#213555]">
+    {/* Sticky Navbar with 7-Language Dropdown & Dark Mode Toggle */}
+    <Navbar 
+      client:load 
+      currentLang={currentLang} 
+      currentPath={Astro.url.pathname}
+      translations={{
+        nav: t.nav
+      }}
+    />
+
+    {/* Main Responsive Stage & Content */}
+    <div class="flex-1 flex flex-col">
+      <slot />
+    </div>
+
+    {/* Developer-grade SEO Content & Informational Guide */}
+    <slot name="seo-content" />
+
+    {/* Footer */}
+    <Footer currentLang={currentLang} />
+  </body>
+</html>

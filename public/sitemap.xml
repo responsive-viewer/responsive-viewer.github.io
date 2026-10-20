@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://responsive-viewer.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://responsive-viewer.github.io/" />
+  </url>
+  <url>
+    <loc>https://responsive-viewer.github.io/es/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+  </url>
+  <url>
+    <loc>https://responsive-viewer.github.io/pt/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+  </url>
+  <url>
+    <loc>https://responsive-viewer.github.io/de/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+  </url>
+  <url>
+    <loc>https://responsive-viewer.github.io/fr/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+  </url>
+  <url>
+    <loc>https://responsive-viewer.github.io/ja/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+  </url>
+  <url>
+    <loc>https://responsive-viewer.github.io/zh/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://responsive-viewer.github.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://responsive-viewer.github.io/es/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://responsive-viewer.github.io/pt/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://responsive-viewer.github.io/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://responsive-viewer.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://responsive-viewer.github.io/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://responsive-viewer.github.io/zh/" />
+  </url>
+</urlset>

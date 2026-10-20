@@ -1,0 +1,243 @@
+---
+import { type SupportedLanguage } from '../i18n/utils';
+import { DEFAULT_DEVICES } from '../data/devices';
+
+interface Props {
+  currentLang: SupportedLanguage;
+  translations: {
+    seo: Record<string, string>;
+  };
+}
+
+const { currentLang, translations } = Astro.props;
+const s = translations.seo;
+
+const devices = DEFAULT_DEVICES;
+
+const langLabels: Record<SupportedLanguage, string> = {
+  en: 'English',
+  es: 'Español',
+  pt: 'Português',
+  de: 'Deutsch',
+  fr: 'Français',
+  ja: '日本語',
+  zh: '简体中文'
+};
+---
+
+<section aria-labelledby="seo-hero-heading" class="w-full bg-white dark:bg-[#0F172A] border-t border-gray-200 dark:border-[#334155] text-gray-800 dark:text-gray-200 py-16 px-4 sm:px-6 lg:px-8 transition-colors">
+  <div class="max-w-6xl mx-auto space-y-16">
+    
+    {/* Accessible Breadcrumb Navigation */}
+    <nav aria-label="Breadcrumb" class="flex items-center justify-center text-xs text-gray-500 dark:text-gray-400">
+      <ol class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-100 dark:bg-[#1E293B] border border-gray-200 dark:border-gray-800 shadow-2xs" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center gap-2">
+          <a href="/" itemprop="item" class="hover:text-[#213555] dark:hover:text-[#E5D283] font-medium transition-colors">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <span class="text-gray-400" aria-hidden="true">/</span>
+        </li>
+        {currentLang !== 'en' && (
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center gap-2">
+            <a href={`/${currentLang}/`} itemprop="item" class="hover:text-[#213555] dark:hover:text-[#E5D283] font-medium transition-colors">
+              <span itemprop="name">{langLabels[currentLang]}</span>
+            </a>
+            <meta itemprop="position" content="2" />
+            <span class="text-gray-400" aria-hidden="true">/</span>
+          </li>
+        )}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="text-[#213555] dark:text-[#E5D283] font-bold" aria-current="page">
+          <span itemprop="name">Tester</span>
+          <meta itemprop="position" content={currentLang === 'en' ? '2' : '3'} />
+        </li>
+      </ol>
+    </nav>
+
+    {/* Hero Value Proposition with Primary H1 Heading */}
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-extrabold tracking-widest uppercase bg-blue-100 dark:bg-blue-950/60 text-[#213555] dark:text-[#E5D283] border border-blue-200 dark:border-blue-900">
+        <span>{s.heroTag}</span>
+      </div>
+      
+      {/* Primary Semantic H1 */}
+      <h1 id="seo-hero-heading" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#213555] dark:text-white leading-tight">
+        {s.heroTitle}
+      </h1>
+      
+      <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+        {s.heroSubtitle}
+      </p>
+    </div>
+
+    {/* Feature Pillars Grid */}
+    <div>
+      <div class="text-center mb-10">
+        <h2 class="text-xl sm:text-2xl font-bold text-[#213555] dark:text-white">
+          {s.featuresTitle}
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+          {s.featuresSubtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Feature 1 */}
+        <div class="p-6 rounded-2xl bg-gray-50 dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] hover:shadow-lg transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#213555] text-white flex items-center justify-center font-black text-sm mb-4" aria-hidden="true">
+            01
+          </div>
+          <h3 class="font-bold text-base text-[#213555] dark:text-white mb-2">
+            {s.f1Title}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.f1Desc}
+          </p>
+        </div>
+
+        {/* Feature 2 */}
+        <div class="p-6 rounded-2xl bg-gray-50 dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] hover:shadow-lg transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#4F709C] text-white flex items-center justify-center font-black text-sm mb-4" aria-hidden="true">
+            02
+          </div>
+          <h3 class="font-bold text-base text-[#213555] dark:text-white mb-2">
+            {s.f2Title}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.f2Desc}
+          </p>
+        </div>
+
+        {/* Feature 3 */}
+        <div class="p-6 rounded-2xl bg-gray-50 dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] hover:shadow-lg transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#E5D283] text-[#213555] flex items-center justify-center font-black text-sm mb-4" aria-hidden="true">
+            03
+          </div>
+          <h3 class="font-bold text-base text-[#213555] dark:text-white mb-2">
+            {s.f3Title}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.f3Desc}
+          </p>
+        </div>
+
+        {/* Feature 4 */}
+        <div class="p-6 rounded-2xl bg-gray-50 dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] hover:shadow-lg transition-all">
+          <div class="w-10 h-10 rounded-xl bg-gray-700 text-white flex items-center justify-center font-black text-sm mb-4" aria-hidden="true">
+            04
+          </div>
+          <h3 class="font-bold text-base text-[#213555] dark:text-white mb-2">
+            {s.f4Title}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.f4Desc}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Device Matrix Showcase */}
+    <div class="p-6 sm:p-8 rounded-3xl bg-[#F0F0F0]/70 dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155]">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold text-[#213555] dark:text-white">
+            Pre-Calibrated Device Breakpoints
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+            Hardware-accurate viewport resolutions ready for instant testing and client reviews.
+          </p>
+        </div>
+        <span class="inline-flex items-center self-start sm:self-auto px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#213555] text-white dark:bg-[#4F709C]">
+          {devices.length} Viewports Preloaded
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        {devices.map((dev) => (
+          <div class="p-3 bg-white dark:bg-[#0F172A] rounded-xl border border-gray-200/80 dark:border-gray-800 shadow-2xs flex flex-col justify-between">
+            <span class="text-xs font-bold text-gray-800 dark:text-gray-200 truncate">{dev.name}</span>
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-100 dark:border-gray-800">
+              <span class="text-[10px] uppercase font-bold text-gray-400">{dev.category}</span>
+              <span class="text-[11px] font-mono font-bold text-[#4F709C] dark:text-[#E5D283]">
+                {dev.width}×{dev.height}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Technical SEO FAQ Section */}
+    <div class="space-y-6">
+      <div class="text-center">
+        <h2 class="text-xl sm:text-2xl font-bold text-[#213555] dark:text-white">
+          {s.faqTitle}
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+          Everything developers need to know about localhost responsive testing and browser security.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div class="p-5 rounded-2xl bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] shadow-2xs">
+          <h3 class="font-bold text-sm sm:text-base text-[#213555] dark:text-[#E5D283] mb-2">
+            {s.faq1Q}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.faq1A}
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] shadow-2xs">
+          <h3 class="font-bold text-sm sm:text-base text-[#213555] dark:text-[#E5D283] mb-2">
+            {s.faq2Q}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.faq2A}
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] shadow-2xs">
+          <h3 class="font-bold text-sm sm:text-base text-[#213555] dark:text-[#E5D283] mb-2">
+            {s.faq3Q}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.faq3A}
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-[#334155] shadow-2xs">
+          <h3 class="font-bold text-sm sm:text-base text-[#213555] dark:text-[#E5D283] mb-2">
+            {s.faq4Q}
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {s.faq4A}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Developer Support Callout */}
+    <div class="p-8 rounded-3xl bg-gradient-to-r from-[#213555] to-[#142136] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+      <div class="space-y-2 text-center sm:text-left">
+        <h3 class="text-lg sm:text-xl font-bold flex items-center justify-center sm:justify-start gap-2">
+          <span>Created with ❤️ for the Web Community</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-300 max-w-xl">
+          ResponsiveViewer is 100% free, client-side, and ad-free. If it accelerates your responsive workflow, consider supporting development on Ko-fi.
+        </p>
+      </div>
+
+      <a
+        href="https://ko-fi.com/kishara"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Support the developer on Ko-fi (opens in new window)"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-extrabold text-sm bg-[#E5D283] text-[#213555] hover:bg-[#d8c575] active:scale-95 transition-all shadow-md shrink-0"
+      >
+        <span>Support on Ko-fi</span>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://responsive-viewer.github.io/sitemap.xml
